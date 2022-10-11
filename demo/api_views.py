@@ -1,7 +1,7 @@
-from .serializers import ProjectSerializer
+from .serializers import ProjectSerializer, PandasSOResourceSerializer
 from rest_framework import viewsets
 from django.http import HttpResponse
-from .models import Project
+from .models import Project, PandasSOResource
 from rest_framework.response import Response
 
 class ProjectView(viewsets.ModelViewSet):
@@ -18,3 +18,9 @@ class ProjectView(viewsets.ModelViewSet):
 			return Response(serlzr.data, status=200)
 
 		# return 
+
+class PandasSOResourceView(viewsets.ModelViewSet):
+	queryset = PandasSOResource.objects.all()
+	serializer_class = PandasSOResourceSerializer
+
+	

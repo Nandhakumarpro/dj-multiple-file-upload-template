@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, ProjectRefImages
+from .models import Project, ProjectRefImages, PandasSOResource
 
 
 class ProjectRefImagesSerializer(serializers.ModelSerializer):
@@ -23,3 +23,11 @@ class ProjectSerializer(serializers.ModelSerializer):
 				**image)
 
 		return project
+
+class PandasSOResourceSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = PandasSOResource
+		fields = "__all__"
+		extra_kwargs = {
+			"wb_sample": {"required": False}
+		}

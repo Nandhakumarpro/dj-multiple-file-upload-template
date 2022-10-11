@@ -12,6 +12,9 @@ class ProjectRefImages(models.Model):
 		'project_images', on_delete=models.CASCADE)
 	image = models.ImageField(upload_to="uploads/")
 
-
+class PandasSOResource(models.Model):
+	issue_title = models.CharField(max_length=255)
+	ref_image = models.ImageField(upload_to="pandas/")
+	wb_sample = models.FileField(upload_to="pandas-wb/", null=True)
 
 
