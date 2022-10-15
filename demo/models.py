@@ -16,5 +16,6 @@ class PandasSOResource(models.Model):
 	issue_title = models.CharField(max_length=255)
 	ref_image = models.ImageField(upload_to="pandas/")
 	wb_sample = models.FileField(upload_to="pandas-wb/", null=True)
+	href_link = models.URLField(max_length=2550, null=True, blank=True)
 
 
