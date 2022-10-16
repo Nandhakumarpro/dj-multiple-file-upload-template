@@ -1,8 +1,10 @@
-from .serializers import ProjectSerializer, PandasSOResourceSerializer
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework import viewsets
 from django.http import HttpResponse
-from .models import Project, PandasSOResource
 from rest_framework.response import Response
+
+from .serializers import ProjectSerializer, PandasSOResourceSerializer
+from .models import Project, PandasSOResource
 
 class ProjectView(viewsets.ModelViewSet):
 	queryset = Project.objects.all()
@@ -20,6 +22,7 @@ class ProjectView(viewsets.ModelViewSet):
 		# return 
 
 class PandasSOResourceView(viewsets.ModelViewSet):
+	authentication_classes = [SessionAuthentication, BasicAuthentication]
 	queryset = PandasSOResource.objects.all()
 	serializer_class = PandasSOResourceSerializer
 
